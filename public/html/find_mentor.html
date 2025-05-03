@@ -3,86 +3,229 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Find Mentor</title>
-    <link rel="stylesheet" href="/css/find_mentor.css" />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-      rel="stylesheet"
-    />
+    <title>Find a Mentor - FathersAdvice</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/find_mentor.css">
+    <style>
+      body { background: #fff; color: #181818; font-family: 'Inter', Segoe UI, Arial, sans-serif; }
+      .orange { color: #ff7a29; }
+      .btn-orange { background: #ff7a29; color: #fff; border: none; border-radius: 8px; font-weight: 600; }
+      .btn-orange:hover { background: #ff8c42; color: #fff; }
+      .section-title { color: #181818; font-weight: 800; letter-spacing: -1px; }
+      .search-section { padding: 4rem 0 2rem 0; background: #fff; }
+      .search-section h1 { font-size: 2.5rem; font-weight: 800; color: #181818; margin-bottom: 2rem; }
+      .search-box { max-width: 600px; margin: 0 auto; }
+      .search-box .input-group { box-shadow: 0 4px 6px rgba(0,0,0,0.08); }
+      .search-box input { border: none; padding: 1rem; font-size: 1.1rem; }
+      .search-box button { padding: 0 1.5rem; background: #ff7a29; color: #fff; border: none; border-radius: 0 8px 8px 0; }
+      .search-box button:hover { background: #ff8c42; }
+      .filters-section { padding: 2rem 0; background: #f8f9fa; box-shadow: 0 2px 4px rgba(0,0,0,0.04); }
+      .filters { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+      .filter-group { flex: 1; min-width: 180px; }
+      .filter-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: #181818; }
+      .form-select { border-radius: 8px; border: 1px solid #eee; }
+      .results-section { padding: 3rem 0; }
+      .results-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+      .results-header h2 { font-weight: 800; color: #181818; }
+      .sort-options select { border-radius: 8px; border: 1px solid #eee; }
+      .mentors-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2.5rem; }
+      .mentor-card { background: #fff; border-radius: 18px; box-shadow: 0 4px 24px rgba(0,0,0,0.10); padding: 2rem 1.5rem 1.5rem 1.5rem; display: flex; flex-direction: column; align-items: center; transition: box-shadow 0.2s, transform 0.2s; min-height: 420px; position: relative; overflow: hidden; }
+      .mentor-card:hover { box-shadow: 0 8px 32px rgba(255,122,41,0.10); transform: translateY(-6px) scale(1.02); }
+      .mentor-photo { width: 120px; height: 120px; object-fit: cover; border-radius: 50%; margin-bottom: 1.2rem; border: 4px solid #f1f1f1; background: #f8f8f8; }
+      .mentor-info h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.2rem; text-align: center; color: #222; }
+      .mentor-expertise { color: #ff7a29; font-size: 1.05rem; margin-bottom: 0.5rem; text-align: center; font-weight: 500; }
+      .mentor-bio { font-size: 0.98rem; color: #666; margin-bottom: 0.8rem; text-align: center; min-height: 48px; }
+      .mentor-rating { color: #ffc107; font-size: 1.05rem; margin-bottom: 0.8rem; text-align: center; }
+      .mentor-card .btn { margin-top: auto; width: 100%; font-weight: 600; border-radius: 8px; padding: 0.6rem 0; font-size: 1.05rem; background: #ff7a29; color: #fff; border: none; }
+      .mentor-card .btn:hover { background: #ff8c42; }
+      .pagination { display: flex; justify-content: center; align-items: center; gap: 1rem; margin-top: 2rem; }
+      .pagination button { background: #ff7a29; color: #fff; border: none; border-radius: 8px; padding: 0.5rem 1.2rem; font-weight: 600; }
+      .pagination button:disabled { background: #eee; color: #aaa; }
+      .footer { background: #181818 !important; color: #fff !important; padding: 4rem 0 2rem; }
+      .footer a { color: #ff7a29; text-decoration: none; }
+      .footer a:hover { color: #fff; }
+      .footer .social-links a { color: #ff7a29; }
+      .footer .social-links a:hover { color: #fff; }
+      .footer-bottom { border-top: 1px solid #333 !important; margin-top: 2rem; padding-top: 1.5rem; text-align: center; }
+      @media (max-width: 900px) { .mentors-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); } .mentor-card { min-height: 380px; padding: 1.2rem 0.7rem 1rem 0.7rem; } }
+      @media (max-width: 600px) { .mentors-grid { grid-template-columns: 1fr; gap: 1.2rem; } .mentor-card { min-height: 320px; padding: 1rem 0.5rem 0.7rem 0.5rem; } .mentor-photo { width: 90px; height: 90px; } }
+    </style>
   </head>
   <body>
-    <header>
-      <div class="header-container">
-        <img src="/images/white logo_.png" alt="Logo" class="logo" />
-        <h1>Find Your Mentor</h1>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm" role="navigation" aria-label="Main navigation">
+      <div class="container">
+        <a class="navbar-brand fw-bold orange" href="/">
+          <img src="../images/Logo Only.png" alt="FathersAdvice Logo" height="40">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item"><a class="nav-link" href="/#features">Features</a></li>
+            <li class="nav-item"><a class="nav-link" href="/#how-it-works">How It Works</a></li>
+            <li class="nav-item"><a class="nav-link" href="/#testimonials">Testimonials</a></li>
+          </ul>
+          <div class="d-flex" id="navbar-auth-buttons">
+            <a href="/dashboard" class="btn btn-outline-orange me-2">Dashboard</a>
+            <button id="logoutBtn" class="btn btn-outline-dark">Logout</button>
+          </div>
+        </div>
       </div>
-    </header>
+    </nav>
 
-    <section class="hero">
-      <div class="hero-content">
-        <h2>Let Us Connect You to the Right Mentor</h2>
-        <p>
-          Fill in the details below, and we will match you with a mentor best
-          suited to your needs.
-        </p>
+    <!-- Search Section -->
+    <section class="search-section">
+      <div class="container">
+        <h1>Find Your Perfect Mentor</h1>
+        <div class="search-box">
+          <div class="input-group">
+            <input type="text" id="searchInput" class="form-control" placeholder="Search by name, expertise, or keywords...">
+            <button class="btn btn-orange" id="searchButton">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        </div>
       </div>
     </section>
 
-    <main>
-      <div class="form-container">
-        <h2>Fill Your Details</h2>
-        <form method="POST" action="/find-mentor">
-          <label for="education">Education:</label>
-          <input
-            type="text"
-            id="education"
-            name="education"
-            placeholder="Enter your education"
-            required
-          />
-
-          <label for="field">Field of Interest:</label>
-          <select id="field" name="field" required>
-            <option value="">Select your field</option>
-            <option value="technology">Technology</option>
-            <option value="finance">Finance</option>
-            <option value="healthcare">Healthcare</option>
-            <option value="design">Design</option>
-            <option value="other">Other</option>
-          </select>
-
-          <label for="location">Location:</label>
-          <input
-            type="text"
-            id="location"
-            name="location"
-            placeholder="Enter your location"
-            required
-          />
-
-          <label for="details">Additional Details:</label>
-          <textarea
-            id="details"
-            name="details"
-            rows="4"
-            placeholder="Enter any additional details"
-          ></textarea>
-
-          <button type="submit">Submit Details</button>
-        </form>
+    <!-- Filters Section -->
+    <section class="filters-section">
+      <div class="container">
+        <div class="filters">
+          <div class="filter-group">
+            <label for="expertiseFilter">Expertise</label>
+            <select id="expertiseFilter" class="form-select">
+              <option value="">All Expertise</option>
+              <option value="career">Career Development</option>
+              <option value="personal">Personal Growth</option>
+              <option value="business">Business</option>
+              <option value="education">Education</option>
+              <option value="technology">Technology</option>
+              <option value="health">Health & Wellness</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="languageFilter">Language</label>
+            <select id="languageFilter" class="form-select">
+              <option value="">All Languages</option>
+              <option value="english">English</option>
+              <option value="spanish">Spanish</option>
+              <option value="french">French</option>
+              <option value="german">German</option>
+              <option value="chinese">Chinese</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="ratingFilter">Minimum Rating</label>
+            <select id="ratingFilter" class="form-select">
+              <option value="0">Any Rating</option>
+              <option value="4">4+ Stars</option>
+              <option value="4.5">4.5+ Stars</option>
+              <option value="5">5 Stars</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="availabilityFilter">Availability</label>
+            <select id="availabilityFilter" class="form-select">
+              <option value="">Any Time</option>
+              <option value="morning">Morning</option>
+              <option value="afternoon">Afternoon</option>
+              <option value="evening">Evening</option>
+            </select>
+          </div>
+        </div>
       </div>
-    </main>
+    </section>
 
-    <footer>
-      <div class="footer-container">
-        <p>&copy; 2024 Father's Advice. All Rights Reserved.</p>
-        <div class="social-icons">
-          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-          <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+    <!-- Results Section -->
+    <section class="results-section">
+      <div class="container">
+        <div class="results-header">
+          <h2>Available Mentors</h2>
+          <div class="sort-options">
+            <select id="sortBy" class="form-select">
+              <option value="rating">Highest Rated</option>
+              <option value="reviews">Most Reviews</option>
+              <option value="price">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+            </select>
+          </div>
+        </div>
+        <div class="mentors-grid" id="mentorsGrid">
+          <!-- Mentors will be loaded dynamically -->
+        </div>
+        <div class="pagination">
+          <button class="btn btn-orange" id="prevPage" disabled>Previous</button>
+          <span id="pageInfo">Page 1 of 1</span>
+          <button class="btn btn-orange" id="nextPage" disabled>Next</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-black text-white" role="contentinfo" aria-label="Footer" style="background: #181818 !important; color: #fff !important;">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 mb-4 mb-md-0">
+            <h3 class="fw-bold mb-2" style="color: #fff;">FathersAdvice</h3>
+            <p>Empowering individuals through mentorship.</p>
+          </div>
+          <div class="col-md-2 mb-4 mb-md-0">
+            <h4>Company</h4>
+            <ul class="list-unstyled">
+              <li><a href="/about" style="color: #ff7a29;">About Us</a></li>
+              <li><a href="/careers" style="color: #ff7a29;">Careers</a></li>
+              <li><a href="/blog" style="color: #ff7a29;">Blog</a></li>
+              <li><a href="/contact" style="color: #ff7a29;">Contact</a></li>
+            </ul>
+          </div>
+          <div class="col-md-2 mb-4 mb-md-0">
+            <h4>Resources</h4>
+            <ul class="list-unstyled">
+              <li><a href="/help" style="color: #ff7a29;">Help Center</a></li>
+              <li><a href="/faq" style="color: #ff7a29;">FAQ</a></li>
+              <li><a href="/privacy" style="color: #ff7a29;">Privacy Policy</a></li>
+              <li><a href="/terms" style="color: #ff7a29;">Terms of Service</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h4>Connect With Us</h4>
+            <div class="social-links d-flex gap-3">
+              <a href="#" style="color: #ff7a29;"><i class="fab fa-facebook fa-lg"></i></a>
+              <a href="#" style="color: #ff7a29;"><i class="fab fa-twitter fa-lg"></i></a>
+              <a href="#" style="color: #ff7a29;"><i class="fab fa-linkedin fa-lg"></i></a>
+              <a href="#" style="color: #ff7a29;"><i class="fab fa-instagram fa-lg"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom mt-4 pt-3 border-top border-light-subtle text-center" style="border-color: #333 !important;">
+          <p class="mb-0">&copy; 2024 FathersAdvice. All rights reserved.</p>
         </div>
       </div>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/find_mentor.js"></script>
+    <script>
+      // Navbar auth logic
+      document.addEventListener('DOMContentLoaded', function() {
+        const authDiv = document.getElementById('navbar-auth-buttons');
+        const user = localStorage.getItem('currentUser');
+        if (user) {
+          authDiv.innerHTML = `
+            <a href="/dashboard" class="btn btn-outline-orange me-2">Dashboard</a>
+            <button id="logoutBtn" class="btn btn-outline-dark">Logout</button>
+          `;
+          const logoutBtn = document.getElementById('logoutBtn');
+          logoutBtn.addEventListener('click', function() {
+            localStorage.removeItem('currentUser');
+            fetch('/logout').then(() => window.location.href = '/');
+          });
+        }
+      });
+    </script>
   </body>
 </html>

@@ -2,216 +2,286 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-      rel="stylesheet"
-    />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fathers Advice</title>
-    <link rel="stylesheet" href="/css/style.css" />
+    <meta name="description" content="FathersAdvice - Connect with experienced mentors for personal and professional growth">
+    <meta name="keywords" content="mentorship, career guidance, personal development, professional growth">
+    <meta name="author" content="FathersAdvice">
+    <meta property="og:title" content="FathersAdvice - Mentorship Platform">
+    <meta property="og:description" content="Connect with experienced mentors who can guide you through your personal and professional journey">
+    <meta property="og:image" content="/images/og-image.jpg">
+    <meta property="og:url" content="https://fathersadvice.com">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <title>FathersAdvice - Mentorship Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <style>
+      body { background: #fff; color: #181818; font-family: 'Inter', Segoe UI, Arial, sans-serif; }
+      .orange { color: #ff7a29; }
+      .bg-orange { background: linear-gradient(90deg, #ff7a29 0%, #ffb347 100%); color: #fff; }
+      .btn-orange { background: #ff7a29; color: #fff; border: none; border-radius: 8px; font-weight: 600; }
+      .btn-orange:hover { background: #ff8c42; color: #fff; }
+      .section-title { color: #181818; font-weight: 800; letter-spacing: -1px; }
+      .hero-section { padding: 6rem 0 4rem 0; background: #fff; }
+      .hero-img-placeholder { width: 100%; max-width: 420px; height: 320px; background: linear-gradient(135deg, #ffb347 0%, #fff 100%); border-radius: 24px; display: flex; align-items: center; justify-content: center; margin: 0 auto; }
+      .hero-img-placeholder svg { width: 120px; height: 120px; }
+      .mentors-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2.5rem; margin-top: 2rem; padding-bottom: 2rem; }
+      .mentor-card { background: #fff; border-radius: 18px; box-shadow: 0 4px 24px rgba(0,0,0,0.10); padding: 2rem 1.5rem 1.5rem 1.5rem; display: flex; flex-direction: column; align-items: center; transition: box-shadow 0.2s, transform 0.2s; min-height: 420px; position: relative; overflow: hidden; }
+      .mentor-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.16); transform: translateY(-6px) scale(1.02); }
+      .mentor-photo-placeholder { width: 140px; height: 140px; border-radius: 50%; background: linear-gradient(135deg, #ffb347 0%, #fff 100%); display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem; border: 4px solid #f1f1f1; }
+      .mentor-info h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.2rem; text-align: center; color: #222; }
+      .mentor-expertise { color: #ff7a29; font-size: 1.05rem; margin-bottom: 0.5rem; text-align: center; font-weight: 500; }
+      .mentor-bio { font-size: 0.98rem; color: #666; margin-bottom: 0.8rem; text-align: center; min-height: 48px; }
+      .mentor-rating { color: #ffc107; font-size: 1.05rem; margin-bottom: 0.8rem; text-align: center; }
+      .mentor-card .btn { margin-top: auto; width: 100%; font-weight: 600; border-radius: 8px; padding: 0.6rem 0; font-size: 1.05rem; }
+      .feature-card { background: #fff7f0; border-radius: 14px; padding: 2.2rem 1.2rem; margin-bottom: 2rem; box-shadow: 0 2px 8px rgba(255,122,41,0.04); text-align: center; transition: box-shadow 0.2s, transform 0.2s; }
+      .feature-card i { color: #ff7a29; font-size: 2.7rem; margin-bottom: 1.2rem; }
+      .feature-card:hover { box-shadow: 0 6px 18px rgba(255,122,41,0.10); transform: translateY(-4px) scale(1.01); }
+      .testimonials-slider { max-width: 800px; margin: 0 auto; }
+      .testimonial { background: #fff; padding: 2rem; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.08); margin-bottom: 2rem; }
+      .testimonial-author-placeholder { width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #ffb347 0%, #fff 100%); display: inline-flex; align-items: center; justify-content: center; margin-right: 1rem; }
+      .footer { background: #181818; color: #fff; padding: 4rem 0 2rem; }
+      .footer a { color: #ffb347; text-decoration: none; }
+      .footer a:hover { color: #fff; }
+      @media (max-width: 900px) { .mentors-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); } .mentor-card { min-height: 380px; padding: 1.2rem 0.7rem 1rem 0.7rem; } }
+      @media (max-width: 600px) { .mentors-grid { grid-template-columns: 1fr; gap: 1.2rem; } .mentor-card { min-height: 320px; padding: 1rem 0.5rem 0.7rem 0.5rem; } .mentor-photo-placeholder { width: 90px; height: 90px; } }
+    </style>
   </head>
   <body>
-    <!-- Header Section -->
-    <header>
-      <div class="logo-container">
-        <img
-          class="logo"
-          src="/images/White logo_.png"
-          alt="Fathers Advice Logo"
-        />
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm" role="navigation" aria-label="Main navigation">
+      <div class="container">
+        <a class="navbar-brand fw-bold orange" href="/">
+          <img src="/images/Logo Only.png" alt="FathersAdvice Logo" height="40">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+            <li class="nav-item"><a class="nav-link" href="#how-it-works">How It Works</a></li>
+            <li class="nav-item"><a class="nav-link" href="#mentors">Find a Mentor</a></li>
+            <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+          </ul>
+          <div class="d-flex" id="navbar-auth-buttons">
+            <a href="/login" class="btn btn-outline-dark me-2">Login</a>
+            <a href="/signup" class="btn btn-orange">Sign Up</a>
+          </div>
+        </div>
       </div>
-      <nav>
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/html/login.html">Find Mentor</a></li>
-          <li><a href="#what-we-do">What We Do</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="/html/about.html">About Us</a></li>
-          <li><a href="/html/login.html">Login/Signup</a></li>
-        </ul>
-      </nav>
-    </header>
+    </nav>
 
     <!-- Hero Section -->
-    <div class="hero">
-      <div class="hero-content">
-        <h1>Welcome to Father's Advice</h1>
-        <p>Your path to success starts here. Let us guide you.</p>
-        <a href="/html/login.html" class="btn-get-started">
-          <div>
-            <span class="initial-text">Get Started</span>
-            <span class="hover-text">Login/Signup</span>
-          </div>
-        </a>
-      </div>
-    </div>
-
-    <!-- Main Content Section -->
-    <div class="main-content">
-      <section id="what-we-do">
-        <h2 style="text-align: center">What We Do</h2>
-        <div class="content-wrapper">
-          <div class="cards-container">
-            <div class="card">
-              <img src="/images/mentoring.png" alt="Mentorship Icon" />
-              <h3>Personalized Mentorship</h3>
-              <p>
-                One-on-one sessions with mentors tailored to your career path.
-              </p>
-            </div>
-            <div class="card">
-              <img src="/images/career.png" alt="Career Guidance Icon" />
-              <h3>Career Guidance</h3>
-              <p>
-                Get insights on job opportunities, interview tips, and career
-                planning.
-              </p>
-            </div>
-            <div class="card">
-              <img src="/images/arrows.png" alt="Growth Icon" />
-              <h3>Personal Growth</h3>
-              <p>
-                Learn and grow with guidance on self-improvement and motivation.
-              </p>
-            </div>
-            <div class="btn-container">
-              <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSdtm9CGknfToKI-UQXPIlfS2A04BMCSn8C4u-cb3R4GQ17mJg/viewform?usp=sf_link"
-                class="btn-primary"
-                >Find Mentor</a
-              >
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <!-- Features & Highlights Section -->
-
-    <section id="features">
-      <div class="logo-heading">
-        <img src="/images/Logo Only.png" class="logo" alt="Logo" />
-        <h2 class="section-heading">Features & Highlights</h2>
-      </div>
+    <section class="hero-section">
       <div class="container">
-        <!-- Feature 1 -->
-        <div class="feature-item">
-          <h3>Global Mentors</h3>
-          <p>We connect mentors from all over the world based on your needs.</p>
-        </div>
-        <!-- Feature 2 -->
-        <div class="feature-item">
-          <h3>Flexible Timings</h3>
-          <p>
-            Mentors can work according to their available times, ensuring
-            flexibility for both parties.
-          </p>
-        </div>
-        <!-- Feature 3 -->
-        <div class="feature-item">
-          <h3>End-to-End Guidance</h3>
-          <p>
-            We stay with the mentee until their goal is achieved, no matter how
-            long it takes.
-          </p>
-        </div>
-        <!-- Feature 4: Flexible Model -->
-        <div class="feature-item">
-          <h3>Flexible Model</h3>
-          <p>
-            We work on a flexible model where mentors choose their working
-            hours, reducing stress for both sides.
-          </p>
-        </div>
-        <!-- Feature 5: Mentee Support -->
-        <div class="feature-item">
-          <h3>Mentee Support</h3>
-          <p>
-            We support mentees throughout their journey, ensuring continuous
-            guidance until they reach their goals.
-          </p>
-        </div>
-        <!-- Feature 6: No Rigid Timings -->
-        <div class="feature-item">
-          <h3>No Rigid Timings</h3>
-          <p>
-            Mentors and mentees can select timings based on their convenience,
-            allowing more flexibility in scheduling sessions.
-          </p>
+        <div class="row align-items-center">
+          <div class="col-lg-6 mb-4 mb-lg-0">
+            <h1 class="display-4 fw-bold mb-3">Find Your <span class="orange">Perfect Mentor</span></h1>
+            <p class="lead mb-4">Connect with experienced mentors who can guide you through your personal and professional journey.</p>
+            <div class="hero-buttons mb-4">
+              <a href="/find_mentor" class="btn btn-orange btn-lg me-2">Find a Mentor</a>
+              <a href="/become-mentor" class="btn btn-outline-dark btn-lg">Become a Mentor</a>
+            </div>
+          </div>
+          <div class="col-lg-6 d-flex justify-content-center">
+            <!-- TODO: Set hero image here -->
+            <div class="hero-img-placeholder">
+              <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="60" cy="60" r="60" fill="#ffb347"/>
+                <rect x="35" y="40" width="50" height="40" rx="10" fill="#fff"/>
+                <rect x="50" y="55" width="20" height="25" rx="5" fill="#ff7a29"/>
+              </svg>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!------------------- ---------------------------------------------------------- -->
-
-    <script>
-      // Intersection Observer to trigger the animation when feature items come into view
-      const observer = new IntersectionObserver(
-        (entries, observer) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              // Add 'in-view' class when the feature item is in view
-              entry.target.classList.add("in-view");
-              observer.unobserve(entry.target); // Stop observing after the item is visible
-            }
-          });
-        },
-        {
-          threshold: 1, // Trigger when 50% of the element is visible
-        }
-      );
-
-      // Observe each feature item
-      document.querySelectorAll(".feature-item").forEach((item) => {
-        observer.observe(item); // Start observing each feature item
-      });
-    </script>
-
-    <footer>
-      <div class="footer-content">
-        <!-- About Section -->
-        <div class="footer-about">
-          <img src="images/White logo_.png" alt="Logo" class="footer-logo" />
-          <p>
-            Connecting mentors from around the world with people who need
-            guidance. We provide end-to-end mentorship to help you achieve your
-            goals.
-          </p>
-        </div>
-
-        <!-- Quick Links Section -->
-        <div class="footer-links">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Mentorship</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-          </ul>
-        </div>
-
-        <!-- Social Media Section -->
-        <div class="footer-social">
-          <h4>GET IN TUCH</h4>
-          <div class="social-icons">
-            <a href="#" class="social-icon"
-              ><i class="fab fa-facebook-f"></i
-            ></a>
-            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="social-icon"
-              ><i class="fab fa-linkedin-in"></i
-            ></a>
-            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+      <div class="container">
+        <h2 class="section-title mb-5">Why Choose <span class="orange">FathersAdvice</span>?</h2>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="feature-card">
+              <i class="fas fa-handshake"></i>
+              <h3>Personalized Matching</h3>
+              <p>We match you with mentors based on your goals, interests, and personality.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="feature-card">
+              <i class="fas fa-video"></i>
+              <h3>Virtual Sessions</h3>
+              <p>Connect with mentors through secure video calls from anywhere in the world.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="feature-card">
+              <i class="fas fa-chart-line"></i>
+              <h3>Progress Tracking</h3>
+              <p>Track your growth and development with our comprehensive progress tools.</p>
+            </div>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- Footer Bottom -->
-      <div class="footer-bottom">
-        <p>&copy; 2024 Father's Advice. All Rights Reserved.</p>
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works-section bg-light">
+      <div class="container">
+        <h2 class="section-title mb-5">How It Works</h2>
+        <div class="row steps">
+          <div class="col-md-4 step">
+            <div class="step-number bg-orange">1</div>
+            <h3>Create Your Profile</h3>
+            <p>Sign up and tell us about yourself and your goals.</p>
+          </div>
+          <div class="col-md-4 step">
+            <div class="step-number bg-orange">2</div>
+            <h3>Find Your Mentor</h3>
+            <p>Browse through our verified mentors and find your perfect match.</p>
+          </div>
+          <div class="col-md-4 step">
+            <div class="step-number bg-orange">3</div>
+            <h3>Start Your Journey</h3>
+            <p>Schedule your first session and begin your mentorship journey.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Find a Mentor Section -->
+    <section id="mentors" class="mentors-section">
+      <div class="container">
+        <h2 class="section-title mb-4">Featured <span class="orange">Mentors</span></h2>
+        <div class="mentor-filters mb-3">
+          <select id="expertiseFilter" class="form-select" aria-label="Filter by expertise">
+            <option value="">All Expertise</option>
+            <option value="career">Career Development</option>
+            <option value="personal">Personal Growth</option>
+            <option value="business">Business</option>
+            <option value="education">Education</option>
+          </select>
+          <select id="languageFilter" class="form-select" aria-label="Filter by language">
+            <option value="">All Languages</option>
+            <option value="english">English</option>
+            <option value="spanish">Spanish</option>
+            <option value="french">French</option>
+          </select>
+        </div>
+        <div class="mentors-grid" id="mentorsGrid">
+          <!-- Mentor cards will be loaded here by JS -->
+        </div>
+        <div class="text-center mt-4">
+          <a href="/find_mentor" class="btn btn-orange btn-lg">View All Mentors</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials-section bg-light">
+      <div class="container">
+        <h2 class="section-title mb-5">What Our Users Say</h2>
+        <div class="testimonials-slider">
+          <div class="testimonial">
+            <div class="testimonial-content">
+              <p class="mb-3">"FathersAdvice helped me find the perfect mentor who guided me through my career transition. The experience was transformative!"</p>
+              <div class="d-flex align-items-center justify-content-center">
+                <!-- TODO: Set testimonial author image here -->
+                <div class="testimonial-author-placeholder">
+                  <svg viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="25" cy="25" r="25" fill="#ffb347"/>
+                    <rect x="15" y="20" width="20" height="15" rx="6" fill="#fff"/>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="mb-0">Sarah Johnson</h4>
+                  <p class="mb-0 small">Software Engineer</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- More testimonials will be loaded dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section my-5">
+      <div class="container">
+        <h2 class="mb-3">Ready to Start Your Journey?</h2>
+        <p class="mb-4">Join thousands of mentees who have transformed their lives through mentorship.</p>
+        <div class="cta-buttons">
+          <a href="/signup" class="btn btn-orange btn-lg me-2">Get Started</a>
+          <a href="/find_mentor" class="btn btn-outline-light btn-lg">Find a Mentor</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-black text-white" role="contentinfo" aria-label="Footer" style="background: #181818 !important; color: #fff !important;">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 mb-4 mb-md-0">
+            <h3 class="fw-bold mb-2" style="color: #fff;">FathersAdvice</h3>
+            <p>Empowering individuals through mentorship.</p>
+          </div>
+          <div class="col-md-2 mb-4 mb-md-0">
+            <h4>Company</h4>
+            <ul class="list-unstyled">
+              <li><a href="/about" style="color: #ff7a29;">About Us</a></li>
+              <li><a href="/careers" style="color: #ff7a29;">Careers</a></li>
+              <li><a href="/blog" style="color: #ff7a29;">Blog</a></li>
+              <li><a href="/contact" style="color: #ff7a29;">Contact</a></li>
+            </ul>
+          </div>
+          <div class="col-md-2 mb-4 mb-md-0">
+            <h4>Resources</h4>
+            <ul class="list-unstyled">
+              <li><a href="/help" style="color: #ff7a29;">Help Center</a></li>
+              <li><a href="/faq" style="color: #ff7a29;">FAQ</a></li>
+              <li><a href="/privacy" style="color: #ff7a29;">Privacy Policy</a></li>
+              <li><a href="/terms" style="color: #ff7a29;">Terms of Service</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h4>Connect With Us</h4>
+            <div class="social-links d-flex gap-3">
+              <a href="#" style="color: #ff7a29;"><i class="fab fa-facebook fa-lg"></i></a>
+              <a href="#" style="color: #ff7a29;"><i class="fab fa-twitter fa-lg"></i></a>
+              <a href="#" style="color: #ff7a29;"><i class="fab fa-linkedin fa-lg"></i></a>
+              <a href="#" style="color: #ff7a29;"><i class="fab fa-instagram fa-lg"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom mt-4 pt-3 border-top border-light-subtle text-center" style="border-color: #333 !important;">
+          <p class="mb-0">&copy; 2024 FathersAdvice. All rights reserved.</p>
+        </div>
       </div>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script>
+      // Navbar auth logic
+      document.addEventListener('DOMContentLoaded', function() {
+        const authDiv = document.getElementById('navbar-auth-buttons');
+        const user = localStorage.getItem('currentUser');
+        if (user) {
+          authDiv.innerHTML = `
+            <a href="/dashboard" class="btn btn-orange me-2">Dashboard</a>
+            <button id="logoutBtn" class="btn btn-outline-dark">Logout</button>
+          `;
+          const logoutBtn = document.getElementById('logoutBtn');
+          logoutBtn.addEventListener('click', function() {
+            localStorage.removeItem('currentUser');
+            fetch('/logout').then(() => window.location.href = '/');
+          });
+        }
+      });
+    </script>
   </body>
 </html>

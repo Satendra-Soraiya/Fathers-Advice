@@ -73,7 +73,9 @@ label {
     font-weight: bold;
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
     margin-top: 0.5rem;
     padding: 0.8rem;
     font-size: 1rem;
@@ -138,14 +140,19 @@ button:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Darker semi-transparent background for better visibility */
+    background: rgba(0, 0, 0, 0.5);
+    /* Darker semi-transparent background for better visibility */
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1000; /* Ensure it is above other elements */
-    visibility: hidden; /* Initially hidden */
-    opacity: 0; /* Start with 0 opacity for smooth fade-in */
-    transition: opacity 0.3s ease, visibility 0.3s ease; /* Add transition for visibility change */
+    z-index: 1000;
+    /* Ensure it is above other elements */
+    visibility: hidden;
+    /* Initially hidden */
+    opacity: 0;
+    /* Start with 0 opacity for smooth fade-in */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    /* Add transition for visibility change */
 }
 
 /* Make the loader visible */
@@ -156,8 +163,10 @@ button:hover {
 
 /* Spinner Styling */
 .spinner {
-    border: 4px solid rgba(0, 0, 0, 0.2); /* Light gray border */
-    border-top: 4px solid #007BFF; /* Use your primary color for the spinner */
+    border: 4px solid rgba(0, 0, 0, 0.2);
+    /* Light gray border */
+    border-top: 4px solid #007BFF;
+    /* Use your primary color for the spinner */
     border-radius: 50%;
     width: 50px;
     height: 50px;
@@ -168,7 +177,267 @@ button:hover {
     from {
         transform: rotate(0deg);
     }
+
     to {
         transform: rotate(360deg);
     }
+}
+
+/* Search Section */
+.search-section {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    text-align: center;
+}
+
+.search-section h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+.search-box {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.search-box .input-group {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    overflow: hidden;
+    align-items: stretch;
+}
+
+.search-box input.form-control {
+    border: none;
+    padding: 0 1rem;
+    font-size: 1.1rem;
+    height: 48px;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.search-box button.btn,
+.search-box button.btn-orange {
+    height: 48px;
+    border-radius: 0 8px 8px 0;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+/* Filters Section */
+.filters-section {
+    padding: 2rem 0;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filters {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.filter-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+.filter-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+/* Results Section */
+.results-section {
+    padding: 3rem 0;
+}
+
+.results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.sort-options {
+    min-width: 200px;
+}
+
+/* Mentor Cards */
+.mentors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.mentor-card {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.10);
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: box-shadow 0.2s, transform 0.2s;
+    min-height: 420px;
+    position: relative;
+    overflow: hidden;
+}
+
+.mentor-card:hover {
+    box-shadow: 0 8px 32px rgba(255, 122, 41, 0.10);
+    transform: translateY(-6px) scale(1.02);
+}
+
+.mentor-photo {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 1.2rem;
+    border: 4px solid #f1f1f1;
+    background: #f8f8f8;
+}
+
+.mentor-info {
+    padding: 1.5rem 0 0 0;
+    width: 100%;
+    text-align: center;
+}
+
+.mentor-info h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+    color: #222;
+}
+
+.mentor-expertise {
+    color: #ff7a29;
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.mentor-bio {
+    font-size: 0.98rem;
+    color: #666;
+    margin-bottom: 0.8rem;
+    min-height: 48px;
+}
+
+.mentor-rating {
+    color: #ffc107;
+    font-size: 1.05rem;
+    margin-bottom: 0.8rem;
+}
+
+.mentor-card .btn {
+    margin-top: auto;
+    width: 100%;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 0.6rem 0;
+    font-size: 1.05rem;
+    background: #ff7a29;
+    color: #fff;
+    border: none;
+}
+
+.mentor-card .btn:hover {
+    background: #ff8c42;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+#pageInfo {
+    font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .mentors-grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+
+    .mentor-card {
+        min-height: 380px;
+        padding: 1.2rem 0.7rem 1rem 0.7rem;
+    }
+
+    .mentor-photo {
+        width: 90px;
+        height: 90px;
+    }
+}
+
+@media (max-width: 600px) {
+    .mentors-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+
+    .mentor-card {
+        min-height: 320px;
+        padding: 1rem 0.5rem 0.7rem 0.5rem;
+    }
+
+    .mentor-photo {
+        width: 70px;
+        height: 70px;
+    }
+}
+
+.btn-outline-orange,
+.btn-outline-dark {
+    height: 40px;
+    padding: 0 1.5rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.btn-outline-orange {
+    color: #ff7a29;
+    border: 2px solid #ff7a29;
+    background: #fff;
+    transition: background 0.2s, color 0.2s;
+}
+
+.btn-outline-orange:hover,
+.btn-outline-orange:focus {
+    background: #ff7a29;
+    color: #fff;
+    border-color: #ff7a29;
+}
+
+.btn-outline-dark {
+    color: #181818;
+    border: 2px solid #181818;
+    background: #fff;
+    transition: background 0.2s, color 0.2s;
+}
+
+.btn-outline-dark:hover,
+.btn-outline-dark:focus {
+    background: #181818;
+    color: #fff;
+    border-color: #181818;
 }
