@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Father's Advice</title>
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <a href="/" target="_blank" class="sidebar-website-link" style="display:flex;align-items:center;gap:8px;margin-bottom:18px;color:white;text-decoration:none;font-weight:bold;font-size:1.1em;">
+                <i class="fas fa-globe"></i>
+                <span>Go to Website</span>
+            </a>
+            <div class="profile-section">
+                <div class="profile-picture">
+                    <img id="profileImage" src="../images/default-avatar.png" alt="Profile Picture">
+                    <button class="change-picture-btn" onclick="document.getElementById('profileImageInput').click()">
+                        <i class="fas fa-camera"></i>
+                    </button>
+                    <input type="file" id="profileImageInput" accept="image/*" style="display: none;">
+                </div>
+                <h2 id="userName">Loading...</h2>
+                <p id="userRole">Loading...</p>
+            </div>
+
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active" data-section="overview">
+                        <i class="fas fa-home"></i>
+                        <span>Overview</span>
+                    </li>
+                    <li data-section="profile">
+                        <i class="fas fa-user"></i>
+                        <span>Profile</span>
+                    </li>
+                    <li data-section="connections">
+                        <i class="fas fa-users"></i>
+                        <span>My Connections</span>
+                    </li>
+                    <li data-section="messages">
+                        <i class="fas fa-comments"></i>
+                        <span>Messages</span>
+                        <span class="notification-badge">0</span>
+                    </li>
+                    <li data-section="video-chat">
+                        <i class="fas fa-video"></i>
+                        <span>Video Chat</span>
+                    </li>
+                    <li data-section="find-mentor">
+                        <i class="fas fa-search"></i>
+                        <span>Find Mentor</span>
+                    </li>
+                    <li data-section="progress">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Progress</span>
+                    </li>
+                    <li data-section="settings">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button id="logoutBtn" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Overview Section -->
+            <section id="overview" class="content-section active">
+                <div class="welcome-banner">
+                    <h1>Welcome back, <span id="welcomeName">User</span>!</h1>
+                    <p>Here's what's happening today</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <i class="fas fa-users"></i>
+                        <h3>Active Connections</h3>
+                        <p id="activeConnections">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-comments"></i>
+                        <h3>Unread Messages</h3>
+                        <p id="unreadMessages">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-calendar-check"></i>
+                        <h3>Upcoming Sessions</h3>
+                        <p id="upcomingSessions">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Progress</h3>
+                        <p id="progressPercentage">0%</p>
+                    </div>
+                </div>
+
+                <div class="recent-activity">
+                    <h2>Recent Activity</h2>
+                    <div class="activity-list" id="recentActivityList">
+                        <!-- Activity items will be populated by JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Profile Section -->
+            <section id="profile" class="content-section">
+                <h2>Profile Settings</h2>
+                <div class="profile-form">
+                    <form id="profileUpdateForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <textarea id="address" name="address"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="language">Preferred Language</label>
+                            <select id="language" name="language">
+                                <option value="english">English</option>
+                                <option value="hindi">Hindi</option>
+                                <option value="gujarati">Gujarati</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="qualification">Qualification</label>
+                            <input type="text" id="qualification" name="qualification">
+                        </div>
+                        <button type="submit" class="save-btn">Save Changes</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Connections Section -->
+            <section id="connections" class="content-section">
+                <h2>My Connections</h2>
+                <div class="connections-grid" id="connectionsList">
+                    <!-- Connection cards will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Messages Section -->
+            <section id="messages" class="content-section">
+                <div class="messages-container">
+                    <div class="conversations-list">
+                        <h3>Conversations</h3>
+                        <div class="search-box">
+                            <input type="text" placeholder="Search conversations...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="conversations" id="conversationsList">
+                            <!-- Conversations will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    <div class="chat-area">
+                        <div class="chat-header">
+                            <h3 id="chatPartnerName">Select a conversation</h3>
+                        </div>
+                        <div class="messages-area" id="messagesArea">
+                            <!-- Messages will be populated by JavaScript -->
+                        </div>
+                        <div class="message-input">
+                            <input type="text" placeholder="Type your message..." id="messageInput">
+                            <button id="sendMessageBtn">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Video Chat Section -->
+            <section id="video-chat" class="content-section">
+                <div class="video-chat-container">
+                    <div class="video-grid">
+                        <div class="video-container">
+                            <video id="localVideo" autoplay muted></video>
+                            <div class="video-controls">
+                                <button id="toggleVideo"><i class="fas fa-video"></i></button>
+                                <button id="toggleAudio"><i class="fas fa-microphone"></i></button>
+                                <button id="endCall"><i class="fas fa-phone-slash"></i></button>
+                            </div>
+                        </div>
+                        <div class="video-container">
+                            <video id="remoteVideo" autoplay></video>
+                        </div>
+                    </div>
+                    <div class="call-controls">
+                        <button id="startCall" class="primary-btn">Start Call</button>
+                        <button id="endCall" class="danger-btn">End Call</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Find Mentor Section -->
+            <section id="find-mentor" class="content-section">
+                <h2>Find a Mentor</h2>
+                <div class="search-filters">
+                    <input type="text" placeholder="Search mentors..." id="mentorSearch">
+                    <select id="expertiseFilter">
+                        <option value="">All Expertise</option>
+                        <option value="career">Career Guidance</option>
+                        <option value="education">Education</option>
+                        <option value="personal">Personal Development</option>
+                    </select>
+                    <select id="languageFilter">
+                        <option value="">All Languages</option>
+                        <option value="english">English</option>
+                        <option value="hindi">Hindi</option>
+                        <option value="gujarati">Gujarati</option>
+                    </select>
+                </div>
+                <div class="mentors-grid" id="mentorsList">
+                    <!-- Mentor cards will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Progress Section -->
+            <section id="progress" class="content-section">
+                <h2>My Progress</h2>
+                <div class="progress-stats">
+                    <div class="progress-chart">
+                        <canvas id="progressChart"></canvas>
+                    </div>
+                    <div class="progress-details">
+                        <div class="progress-item">
+                            <h3>Completed Sessions</h3>
+                            <p id="completedSessions">0</p>
+                        </div>
+                        <div class="progress-item">
+                            <h3>Goals Achieved</h3>
+                            <p id="goalsAchieved">0</p>
+                        </div>
+                        <div class="progress-item">
+                            <h3>Skills Improved</h3>
+                            <p id="skillsImproved">0</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="goals-section">
+                    <h3>Current Goals</h3>
+                    <div class="goals-list" id="goalsList">
+                        <!-- Goals will be populated by JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings" class="content-section">
+                <h2>Account Settings</h2>
+                <div class="settings-grid">
+                    <div class="settings-card">
+                        <h3>Notifications</h3>
+                        <div class="setting-item">
+                            <label>Email Notifications</label>
+                            <label class="switch">
+                                <input type="checkbox" id="emailNotifications">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <label>Push Notifications</label>
+                            <label class="switch">
+                                <input type="checkbox" id="pushNotifications">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="settings-card">
+                        <h3>Privacy</h3>
+                        <div class="setting-item">
+                            <label>Profile Visibility</label>
+                            <select id="profileVisibility">
+                                <option value="public">Public</option>
+                                <option value="connections">Connections Only</option>
+                                <option value="private">Private</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="settings-card">
+                        <h3>Security</h3>
+                        <button class="change-password-btn">Change Password</button>
+                        <button class="two-factor-btn">Enable Two-Factor Authentication</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div id="changePasswordModal" class="modal">
+        <div class="modal-content">
+            <h2>Change Password</h2>
+            <form id="changePasswordForm">
+                <div class="form-group">
+                    <label for="currentPassword">Current Password</label>
+                    <input type="password" id="currentPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="newPassword">New Password</label>
+                    <input type="password" id="newPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm New Password</label>
+                    <input type="password" id="confirmPassword" required>
+                </div>
+                <button type="submit" class="save-btn">Update Password</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/dashboard.js"></script>
+</body>
+</html> 
