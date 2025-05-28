@@ -9,17 +9,17 @@
     <link rel="stylesheet" href="../css/find_mentor.css">
     <style>
       body { background: #fff; color: #181818; font-family: 'Inter', Segoe UI, Arial, sans-serif; }
-      .orange { color: #ff7a29; }
-      .btn-orange { background: #ff7a29; color: #fff; border: none; border-radius: 8px; font-weight: 600; }
-      .btn-orange:hover { background: #ff8c42; color: #fff; }
+      .orange { color: #E67E22; }
+      .btn-orange { background: #ac5d18; color: #fff; border: none; border-radius: 8px; font-weight: 600; }
+      .btn-orange:hover { background: #E67E22; color: #fff; }
       .section-title { color: #181818; font-weight: 800; letter-spacing: -1px; }
       .search-section { padding: 4rem 0 2rem 0; background: #fff; }
       .search-section h1 { font-size: 2.5rem; font-weight: 800; color: #181818; margin-bottom: 2rem; }
       .search-box { max-width: 600px; margin: 0 auto; }
       .search-box .input-group { box-shadow: 0 4px 6px rgba(0,0,0,0.08); }
       .search-box input { border: none; padding: 1rem; font-size: 1.1rem; }
-      .search-box button { padding: 0 1.5rem; background: #ff7a29; color: #fff; border: none; border-radius: 0 8px 8px 0; }
-      .search-box button:hover { background: #ff8c42; }
+      .search-box button { padding: 0 1.5rem; background: #E67E22; color: #fff; border: none; border-radius: 0 8px 8px 0; }
+      .search-box button:hover { background: #E67E22; }
       .filters-section { padding: 2rem 0; background: #f8f9fa; box-shadow: 0 2px 4px rgba(0,0,0,0.04); }
       .filters { display: flex; gap: 1.5rem; flex-wrap: wrap; }
       .filter-group { flex: 1; min-width: 180px; }
@@ -34,22 +34,29 @@
       .mentor-card:hover { box-shadow: 0 8px 32px rgba(255,122,41,0.10); transform: translateY(-6px) scale(1.02); }
       .mentor-photo { width: 120px; height: 120px; object-fit: cover; border-radius: 50%; margin-bottom: 1.2rem; border: 4px solid #f1f1f1; background: #f8f8f8; }
       .mentor-info h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.2rem; text-align: center; color: #222; }
-      .mentor-expertise { color: #ff7a29; font-size: 1.05rem; margin-bottom: 0.5rem; text-align: center; font-weight: 500; }
+      .mentor-expertise { color: #E67E22; font-size: 1.05rem; margin-bottom: 0.5rem; text-align: center; font-weight: 500; }
       .mentor-bio { font-size: 0.98rem; color: #666; margin-bottom: 0.8rem; text-align: center; min-height: 48px; }
       .mentor-rating { color: #ffc107; font-size: 1.05rem; margin-bottom: 0.8rem; text-align: center; }
-      .mentor-card .btn { margin-top: auto; width: 100%; font-weight: 600; border-radius: 8px; padding: 0.6rem 0; font-size: 1.05rem; background: #ff7a29; color: #fff; border: none; }
-      .mentor-card .btn:hover { background: #ff8c42; }
+      .mentor-card .btn { margin-top: auto; width: 100%; font-weight: 600; border-radius: 8px; padding: 0.6rem 0; font-size: 1.05rem; background: #E67E22; color: #fff; border: none; }
+      .mentor-card .btn:hover { background: #E67E22; }
       .pagination { display: flex; justify-content: center; align-items: center; gap: 1rem; margin-top: 2rem; }
-      .pagination button { background: #ff7a29; color: #fff; border: none; border-radius: 8px; padding: 0.5rem 1.2rem; font-weight: 600; }
+      .pagination button { background: #E67E22; color: #fff; border: none; border-radius: 8px; padding: 0.5rem 1.2rem; font-weight: 600; }
       .pagination button:disabled { background: #eee; color: #aaa; }
       .footer { background: #181818 !important; color: #fff !important; padding: 4rem 0 2rem; }
-      .footer a { color: #ff7a29; text-decoration: none; }
+      .footer a { color: #E67E22; text-decoration: none; }
       .footer a:hover { color: #fff; }
-      .footer .social-links a { color: #ff7a29; }
+      .footer .social-links a { color: #E67E22; }
       .footer .social-links a:hover { color: #fff; }
       .footer-bottom { border-top: 1px solid #333 !important; margin-top: 2rem; padding-top: 1.5rem; text-align: center; }
       @media (max-width: 900px) { .mentors-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); } .mentor-card { min-height: 380px; padding: 1.2rem 0.7rem 1rem 0.7rem; } }
       @media (max-width: 600px) { .mentors-grid { grid-template-columns: 1fr; gap: 1.2rem; } .mentor-card { min-height: 320px; padding: 1rem 0.5rem 0.7rem 0.5rem; } .mentor-photo { width: 90px; height: 90px; } }
+
+      #navbar-auth-buttons .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        vertical-align: middle;
+      }
     </style>
   </head>
   <body>
@@ -68,9 +75,8 @@
             <li class="nav-item"><a class="nav-link" href="/#how-it-works">How It Works</a></li>
             <li class="nav-item"><a class="nav-link" href="/#testimonials">Testimonials</a></li>
           </ul>
-          <div class="d-flex" id="navbar-auth-buttons">
-            <a href="/dashboard" class="btn btn-outline-orange me-2">Dashboard</a>
-            <button id="logoutBtn" class="btn btn-outline-dark">Logout</button>
+          <div class="d-flex align-items-center" id="navbar-auth-buttons">
+            <!-- Buttons are added dynamically by JS -->
           </div>
         </div>
       </div>
@@ -224,6 +230,12 @@
             localStorage.removeItem('currentUser');
             fetch('/logout').then(() => window.location.href = '/');
           });
+        } else {
+          // Add login/signup buttons if user is not logged in
+          authDiv.innerHTML = `
+            <a href="/login" class="btn btn-outline-dark me-2">Login</a>
+            <a href="/signup" class="btn btn-orange">Sign Up</a>
+          `;
         }
       });
     </script>

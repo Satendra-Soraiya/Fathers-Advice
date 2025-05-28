@@ -18,31 +18,31 @@
     <link rel="stylesheet" href="/css/main.css">
     <style>
       body { background: #fff; color: #181818; font-family: 'Inter', Segoe UI, Arial, sans-serif; }
-      .orange { color: #ff7a29; }
-      .bg-orange { background: linear-gradient(90deg, #ff7a29 0%, #ffb347 100%); color: #fff; }
-      .btn-orange { background: #ff7a29; color: #fff; border: none; border-radius: 8px; font-weight: 600; }
-      .btn-orange:hover { background: #ff8c42; color: #fff; }
+      .orange { color: #E67E22; }
+      .bg-orange { background: linear-gradient(90deg, #E67E22 0%, #E67E22 100%); color: #fff; }
+      .btn-orange { background: #E67E22; color: #fff; border: none; border-radius: 8px; font-weight: 600; }
+      .btn-orange:hover { background: #E67E22; color: #fff; }
       .section-title { color: #181818; font-weight: 800; letter-spacing: -1px; }
       .hero-section { padding: 6rem 0 4rem 0; background: #fff; }
-      .hero-img-placeholder { width: 100%; max-width: 420px; height: 320px; background: linear-gradient(135deg, #ffb347 0%, #fff 100%); border-radius: 24px; display: flex; align-items: center; justify-content: center; margin: 0 auto; }
+      .hero-img-placeholder { width: 100%; max-width: 420px; height: 320px; background: linear-gradient(135deg, #E67E22 0%, #fff 100%); border-radius: 24px; display: flex; align-items: center; justify-content: center; margin: 0 auto; }
       .hero-img-placeholder svg { width: 120px; height: 120px; }
       .mentors-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2.5rem; margin-top: 2rem; padding-bottom: 2rem; }
       .mentor-card { background: #fff; border-radius: 18px; box-shadow: 0 4px 24px rgba(0,0,0,0.10); padding: 2rem 1.5rem 1.5rem 1.5rem; display: flex; flex-direction: column; align-items: center; transition: box-shadow 0.2s, transform 0.2s; min-height: 420px; position: relative; overflow: hidden; }
       .mentor-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.16); transform: translateY(-6px) scale(1.02); }
-      .mentor-photo-placeholder { width: 140px; height: 140px; border-radius: 50%; background: linear-gradient(135deg, #ffb347 0%, #fff 100%); display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem; border: 4px solid #f1f1f1; }
+      .mentor-photo-placeholder { width: 140px; height: 140px; border-radius: 50%; background: linear-gradient(135deg, #E67E22 0%, #fff 100%); display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem; border: 4px solid #f1f1f1; }
       .mentor-info h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.2rem; text-align: center; color: #222; }
-      .mentor-expertise { color: #ff7a29; font-size: 1.05rem; margin-bottom: 0.5rem; text-align: center; font-weight: 500; }
+      .mentor-expertise { color: #E67E22; font-size: 1.05rem; margin-bottom: 0.5rem; text-align: center; font-weight: 500; }
       .mentor-bio { font-size: 0.98rem; color: #666; margin-bottom: 0.8rem; text-align: center; min-height: 48px; }
       .mentor-rating { color: #ffc107; font-size: 1.05rem; margin-bottom: 0.8rem; text-align: center; }
       .mentor-card .btn { margin-top: auto; width: 100%; font-weight: 600; border-radius: 8px; padding: 0.6rem 0; font-size: 1.05rem; }
-      .feature-card { background: #fff7f0; border-radius: 14px; padding: 2.2rem 1.2rem; margin-bottom: 2rem; box-shadow: 0 2px 8px rgba(255,122,41,0.04); text-align: center; transition: box-shadow 0.2s, transform 0.2s; }
-      .feature-card i { color: #ff7a29; font-size: 2.7rem; margin-bottom: 1.2rem; }
-      .feature-card:hover { box-shadow: 0 6px 18px rgba(255,122,41,0.10); transform: translateY(-4px) scale(1.01); }
+      .feature-card { background: #fff7f0; border-radius: 14px; padding: 2.2rem 1.2rem; margin-bottom: 2rem; box-shadow: 0 2px 8px rgba(230,126,34,0.04); text-align: center; transition: box-shadow 0.2s, transform 0.2s; }
+      .feature-card i { color: #E67E22; font-size: 2.7rem; margin-bottom: 1.2rem; }
+      .feature-card:hover { box-shadow: 0 6px 18px rgba(230,126,34,0.10); transform: translateY(-4px) scale(1.01); }
       .testimonials-slider { max-width: 800px; margin: 0 auto; }
       .testimonial { background: #fff; padding: 2rem; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.08); margin-bottom: 2rem; }
-      .testimonial-author-placeholder { width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #ffb347 0%, #fff 100%); display: inline-flex; align-items: center; justify-content: center; margin-right: 1rem; }
+      .testimonial-author-placeholder { width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #E67E22 0%, #fff 100%); display: inline-flex; align-items: center; justify-content: center; margin-right: 1rem; }
       .footer { background: #181818; color: #fff; padding: 4rem 0 2rem; }
-      .footer a { color: #ffb347; text-decoration: none; }
+      .footer a { color: #E67E22; text-decoration: none; }
       .footer a:hover { color: #fff; }
       @media (max-width: 900px) { .mentors-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); } .mentor-card { min-height: 380px; padding: 1.2rem 0.7rem 1rem 0.7rem; } }
       @media (max-width: 600px) { .mentors-grid { grid-template-columns: 1fr; gap: 1.2rem; } .mentor-card { min-height: 320px; padding: 1rem 0.5rem 0.7rem 0.5rem; } .mentor-photo-placeholder { width: 90px; height: 90px; } }
@@ -89,9 +89,9 @@
             <!-- TODO: Set hero image here -->
             <div class="hero-img-placeholder">
               <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="60" cy="60" r="60" fill="#ffb347"/>
+                <circle cx="60" cy="60" r="60" fill="#E67E22"/>
                 <rect x="35" y="40" width="50" height="40" rx="10" fill="#fff"/>
-                <rect x="50" y="55" width="20" height="25" rx="5" fill="#ff7a29"/>
+                <rect x="50" y="55" width="20" height="25" rx="5" fill="#E67E22"/>
               </svg>
             </div>
           </div>
@@ -193,7 +193,7 @@
                 <!-- TODO: Set testimonial author image here -->
                 <div class="testimonial-author-placeholder">
                   <svg viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="25" cy="25" r="25" fill="#ffb347"/>
+                    <circle cx="25" cy="25" r="25" fill="#E67E22"/>
                     <rect x="15" y="20" width="20" height="15" rx="6" fill="#fff"/>
                   </svg>
                 </div>
@@ -232,28 +232,28 @@
           <div class="col-md-2 mb-4 mb-md-0">
             <h4>Company</h4>
             <ul class="list-unstyled">
-              <li><a href="/about" style="color: #ff7a29;">About Us</a></li>
-              <li><a href="/careers" style="color: #ff7a29;">Careers</a></li>
-              <li><a href="/blog" style="color: #ff7a29;">Blog</a></li>
-              <li><a href="/contact" style="color: #ff7a29;">Contact</a></li>
+              <li><a href="/about" style="color: #E67E22;">About Us</a></li>
+              <li><a href="/careers" style="color: #E67E22;">Careers</a></li>
+              <li><a href="/blog" style="color: #E67E22;">Blog</a></li>
+              <li><a href="/contact" style="color: #E67E22;">Contact</a></li>
             </ul>
           </div>
           <div class="col-md-2 mb-4 mb-md-0">
             <h4>Resources</h4>
             <ul class="list-unstyled">
-              <li><a href="/help" style="color: #ff7a29;">Help Center</a></li>
-              <li><a href="/faq" style="color: #ff7a29;">FAQ</a></li>
-              <li><a href="/privacy" style="color: #ff7a29;">Privacy Policy</a></li>
-              <li><a href="/terms" style="color: #ff7a29;">Terms of Service</a></li>
+              <li><a href="/help" style="color: #E67E22;">Help Center</a></li>
+              <li><a href="/faq" style="color: #E67E22;">FAQ</a></li>
+              <li><a href="/privacy" style="color: #E67E22;">Privacy Policy</a></li>
+              <li><a href="/terms" style="color: #E67E22;">Terms of Service</a></li>
             </ul>
           </div>
           <div class="col-md-4">
             <h4>Connect With Us</h4>
             <div class="social-links d-flex gap-3">
-              <a href="#" style="color: #ff7a29;"><i class="fab fa-facebook fa-lg"></i></a>
-              <a href="#" style="color: #ff7a29;"><i class="fab fa-twitter fa-lg"></i></a>
-              <a href="#" style="color: #ff7a29;"><i class="fab fa-linkedin fa-lg"></i></a>
-              <a href="#" style="color: #ff7a29;"><i class="fab fa-instagram fa-lg"></i></a>
+              <a href="#" style="color: #E67E22;"><i class="fab fa-facebook fa-lg"></i></a>
+              <a href="#" style="color: #E67E22;"><i class="fab fa-twitter fa-lg"></i></a>
+              <a href="#" style="color: #E67E22;"><i class="fab fa-linkedin fa-lg"></i></a>
+              <a href="#" style="color: #E67E22;"><i class="fab fa-instagram fa-lg"></i></a>
             </div>
           </div>
         </div>
